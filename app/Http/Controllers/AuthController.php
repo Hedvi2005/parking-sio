@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\utilisateur;
 
 class AuthController extends Controller
 {
@@ -22,15 +23,15 @@ class AuthController extends Controller
         ]);
 
         $resultat = Auth::attempt([
-            'Email' => request('Email'), 
+            'email' => request('email'), 
             'password' => request('password'), 
         ]);
 
         if ($resultat) {
-            return redirect('/accueil_utilisateur.accueil_utilisateur');
+            return redirect('/accueil_utilisateur');
         }
         
-        return back()->withinput();
+        return back()->withErrors(['email' => 'Les identifiants sont incorrects.'])->withInput();
 
     }
 }

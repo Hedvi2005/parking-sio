@@ -137,7 +137,7 @@ button:hover {
 
     <div>
         <label for="nom">Votre mot de passe</label>
-        <input type="password" id="password" name="passwordphp" placeholder="****" required>
+        <input type="password" id="password" name="password" placeholder="****" required>
     </div>
 
     <div>
