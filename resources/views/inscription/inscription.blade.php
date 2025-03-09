@@ -110,8 +110,8 @@
                 </div>
 
                 <div>
-                    <label for="Email">Votre e-mail</label>
-                    <input type="Email" id="Email" name="Email" placeholder="Hedvi@exemple.com" required>
+                    <label for="email">Votre e-mail</label>
+                    <input type="email" id="email" name="email" placeholder="Hedvi@exemple.com" required>
                 </div>
 
                 <div>

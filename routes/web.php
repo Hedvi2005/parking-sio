@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Route as LaravelRoute;
 use App\Http\Controllers\InscriptionController;
 use App\Models\Utilisateur;
 use Illuminate\Http\Request;
@@ -22,9 +22,10 @@ Route::get('/', function () {
     return view('accueil.accueil');
 })->name('page_accueil');
 
-Route::get('/connexion', function () {
-    return view('connexion.connexion');
-})->name('page_connexion');
+Route::get('/connexion', [AuthController::class, 'showLogin'])->name('connexion');
+
+Route::post('/connexion', [AuthController::class, 'traitement'])->name('connexion.traitement');
+
 
 Route::get('/inscription', function () {
     return view('inscription.inscription');
@@ -56,10 +57,11 @@ Route::post('/inscription', function (Request $request) {
 
         'Prénom'  => $request->Prénom,
         'Nom'     => $request->Nom,
-        'Email'   => $request->Email,
+        'email'   => $request->email,
         'password'=> bcrypt($request->password),
     ]);
 
     return view('confirmation.confirmation_inscription');
 
 });
+
